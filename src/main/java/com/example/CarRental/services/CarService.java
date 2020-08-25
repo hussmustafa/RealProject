@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -19,24 +20,35 @@ public class CarService implements CarRepository{
 
 	@Autowired
 	private CarRepository carRepo;
+//	
+//	public List <String> getAllCarName()
+//	{
+//		 List<CarModel> cars = carRepo.findAll();
+//	        return cars.stream().map(p -> p.getCarName()).sorted().collect(Collectors.toList());
+//
+//		
+//	}
+//
 	
-	public List <String> getAllCarName()
+	public String addCar(CarModel car)
+	
 	{
-		 List<CarModel> cars = carRepo.findAll();
-	        return cars.stream().map(p -> p.getCarName()).sorted().collect(Collectors.toList());
-
+	carRepo.save(car);
+	return "saved";
+		
 		
 	}
 	
-	
-
+//
+//	
+//
 //	@Override
-//	public CarModel findByCarName(String CarName) {
-//	CarModel car = carRepo.findByCarName(CarName);
-//	if (car==null)
+//	public CarModel findByCarId(int id) {
+////	CarModel car = (CarModel) carRepo.getCarById(id);
+////	if (car==null)
 //		return null;
 //	
-//	return car;
+////	return null;
 //	}
 
 	@Override
@@ -187,6 +199,19 @@ public class CarService implements CarRepository{
 	}
 
 
+
+
+
+
+//
+//
+//	@Override
+//	public List<String> getCarById(int carId) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//
 
 //
 //	@Override

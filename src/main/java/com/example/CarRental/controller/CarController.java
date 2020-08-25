@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.CarRental.model.CarModel;
@@ -19,27 +20,39 @@ public class CarController {
 	
 	@Autowired
 	private CarService carService ;
-	
-	@GetMapping("/{carname}")
-	public String getCarByName(@PathVariable("carname") String carname) {
-		
-		//Cars car = this.carService.findByCarName(carname);
-		return null;
-				
-		
-	}
-	
-	 @GetMapping("/allCars")
-	    public List<String> getAllNames() {
-	        return this.carService.getAllCarName();
+//	
+//	@GetMapping("/{carname}")
+//	public String getCarByName(@PathVariable("carname") String carname) {
+//		
+//		//Cars car = this.carService.findByCarName(carname);
+//		return null;
+//				
+//		
+//	}
+//	
+//	 @GetMapping("/allCars")
+//	    public List<String> getAllNames() {
+//	        return this.carService.getAllCarName();
+//	 }
+//	 
+//	 @PostMapping("/load")
+//	 public List<CarModel> persist(@RequestBody final CarModel car){
+//		 
+//		 carService.save(car);
+//		return carService.findAll();
+//	 }
+	 @PostMapping("/add")
+		public String addCar(@RequestParam String carName, @RequestParam String carModel,@RequestParam String carType ,@RequestParam String price) {
+		 CarModel car = new CarModel();
+			car.setCarName(carName);
+			car.setCarModel(carModel);
+			car.setCarType(carType);
+			car.setPrice(price);
+			
+			carService.addCar(car);
+			return "Done";
 	 }
-	 
-	 @PostMapping("/load")
-	 public List<CarModel> persist(@RequestBody final CarModel car){
-		 
-		 carService.save(car);
-		return carService.findAll();
-	 }
+
 	
 	
 

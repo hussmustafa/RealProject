@@ -11,44 +11,44 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.example.CarRental.model.AdminModel;
-import com.example.CarRental.repository.adminRepository;
+import com.example.CarRental.model.userModel;
+import com.example.CarRental.repository.userRepository;
 @Service
-public class adminService implements adminRepository {
+public class userService implements userRepository {
+	
 
 	@Autowired
-	private adminRepository adminRepo;
+	private userRepository userRepo;
 	
-	
-	public List <String> getAllAdminName()
+	public List <String> getAllUserNames()
 	{
-		 List<AdminModel> admins = adminRepo.findAll();
-	        return admins.stream().map(p -> p.getAdminName()).sorted().collect(Collectors.toList());
+		 List<userModel> users = userRepo.findAll();
+	        return users.stream().map(p -> p.getUserName()).sorted().collect(Collectors.toList());
 
 		
 	}
 	
 
 	@Override
-	public List<AdminModel> findAll() {
+	public List<userModel> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<AdminModel> findAll(Sort sort) {
+	public List<userModel> findAll(Sort sort) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<AdminModel> findAllById(Iterable<Integer> ids) {
+	public List<userModel> findAllById(Iterable<Integer> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends AdminModel> List<S> saveAll(Iterable<S> entities) {
+	public <S extends userModel> List<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -60,13 +60,13 @@ public class adminService implements adminRepository {
 	}
 
 	@Override
-	public <S extends AdminModel> S saveAndFlush(S entity) {
+	public <S extends userModel> S saveAndFlush(S entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteInBatch(Iterable<AdminModel> entities) {
+	public void deleteInBatch(Iterable<userModel> entities) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -78,37 +78,37 @@ public class adminService implements adminRepository {
 	}
 
 	@Override
-	public AdminModel getOne(Integer id) {
+	public userModel getOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends AdminModel> List<S> findAll(Example<S> example) {
+	public <S extends userModel> List<S> findAll(Example<S> example) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends AdminModel> List<S> findAll(Example<S> example, Sort sort) {
+	public <S extends userModel> List<S> findAll(Example<S> example, Sort sort) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Page<AdminModel> findAll(Pageable pageable) {
+	public Page<userModel> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends AdminModel> S save(S entity) {
+	public <S extends userModel> S save(S entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<AdminModel> findById(Integer id) {
+	public Optional<userModel> findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -132,13 +132,13 @@ public class adminService implements adminRepository {
 	}
 
 	@Override
-	public void delete(AdminModel entity) {
+	public void delete(userModel entity) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends AdminModel> entities) {
+	public void deleteAll(Iterable<? extends userModel> entities) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -150,29 +150,27 @@ public class adminService implements adminRepository {
 	}
 
 	@Override
-	public <S extends AdminModel> Optional<S> findOne(Example<S> example) {
+	public <S extends userModel> Optional<S> findOne(Example<S> example) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends AdminModel> Page<S> findAll(Example<S> example, Pageable pageable) {
+	public <S extends userModel> Page<S> findAll(Example<S> example, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends AdminModel> long count(Example<S> example) {
+	public <S extends userModel> long count(Example<S> example) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public <S extends AdminModel> boolean exists(Example<S> example) {
+	public <S extends userModel> boolean exists(Example<S> example) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
 
 }

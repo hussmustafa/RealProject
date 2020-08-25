@@ -2,21 +2,23 @@ package com.example.CarRental.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.CarRental.services.adminService;
+import com.example.CarRental.services.userService;
+
 
 @RestController
-@RequestMapping("/carrental/admins")
-public class adminController {
+@RequestMapping("/carrental/users")
+public class userController  {
+	@Autowired
+	private userService userSer;
 	
-	private adminService adminServ;
-	
-	 @GetMapping("/allAdmins")
+	 @GetMapping("/allUsers")
 	    public List<String> getAllNames() {
-	        return this.adminServ.getAllAdminName();
+	        return this.userSer.getAllUserNames();
 	 }
 	
 	
