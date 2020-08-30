@@ -31,21 +31,13 @@ public class userService implements userRepository {
 
 	@Override
 	public List<userModel> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return userRepo.findAll();
 	}
 
-	@Override
-	public List<userModel> findAll(Sort sort) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
-	@Override
-	public List<userModel> findAllById(Iterable<Integer> ids) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public <S extends userModel> List<S> saveAll(Iterable<S> entities) {
@@ -171,6 +163,27 @@ public class userService implements userRepository {
 	public <S extends userModel> boolean exists(Example<S> example) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public List<userModel> findAll(Sort sort) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<userModel> findAllById(Iterable<Integer> ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<userModel> findById( int id) {
+		// TODO Auto-generated method stub
+		return (List<userModel>) userRepo.getOne(id);
 	}
 
 }

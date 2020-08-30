@@ -33,30 +33,30 @@ public class userController  {
 	        return this.userSer.getAllUserNames();
 	 }
 	 
-	 @PostMapping("/addUser")
-		userModel addUser(@RequestBody userModel newuser, @PathVariable int Id) {
-
-		    return userRepo.findById(Id)
-		      .map(user -> {
-		    	  user.setUserName(newuser.getUserName());
-		    	  user.setUserEmeil(newuser.getUserEmeil());
-		    	  user.setUserAddreas(newuser.getUserAddreas());
-		    	  user.setCash(newuser.getCash());
-
-
-		        return userRepo.save(user);
-		      })
-		      .orElseGet(() -> {
-		    	  newuser.setUserId(Id);
-		        return userRepo.save(newuser);
-		      });
-		  }
-		
-		@DeleteMapping("/Delete")
-		  void deleteUser(@PathVariable int id) {
-			userRepo.deleteById(id);
-		  }
-		
+//	 @PostMapping("/addUser")
+//		userModel addUser(@RequestBody userModel newuser, @PathVariable int Id) {
+//
+//		    return userRepo.findById(Id)
+//		      .map(user -> {
+//		    	  user.setUserName(newuser.getUserName());
+//		    	  user.setUserEmeil(newuser.getUserEmeil());
+//		    	  user.setUserAddreas(newuser.getUserAddreas());
+//		    	  user.setCash(newuser.getCash());
+//
+//
+//		        return userRepo.save(user);
+//		      })
+//		      .orElseGet(() -> {
+//		    	  newuser.setUserId(Id);
+//		        return userRepo.save(newuser);
+//		      });
+//		  }
+//		
+//		@DeleteMapping("/Delete")
+//		  void deleteUser(@PathVariable int id) {
+//			userRepo.deleteById(id);
+//		  }
+//		
 		
 //		@PutMapping("/users/{id}")
 //		ResponseEntity<?> replaceEmployee(@RequestBody userModel usres, @PathVariable int id) {

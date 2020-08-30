@@ -13,22 +13,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.CarRental.model.AdminModel;
 import com.example.CarRental.model.CarModel;
+import com.example.CarRental.model.userModel;
 import com.example.CarRental.repository.adminRepository;
+import com.example.CarRental.repository.userRepository;
 import com.example.CarRental.services.adminService;
+import com.example.CarRental.services.userService;
 
 @RestController
 @RequestMapping("/carrental/admins")
 public class adminController {
 	
-	private adminService adminServ;
 	@Autowired 
 	private adminRepository adminRe;
 	
+	private  userService userSer;
 	
-	 @GetMapping("/allAdmins")
-	    public List<String> getAllNames() {
-	        return this.adminServ.getAllAdminName();
+	
+	 
+	 @GetMapping("/getUsers")
+	 List<userModel> getAllUsers(){
+		 return userSer.findAll();
 	 }
+	 
+	 @GetMapping("/getUser/{id}")
+	 public userModel GetUserById(int id) {
+		 return (userModel) userSer.findById(id);
+	 }
+	 
 	 
 	 @PostMapping("/addAdmin")
 		AdminModel addAdmin(@RequestBody AdminModel newadmin, @PathVariable int Id) {
