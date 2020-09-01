@@ -11,9 +11,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.CarRental.model.regModel;
+import com.example.CarRental.model.userModel;
 import com.example.CarRental.repository.regRepositry;
 @Service
 public class regService implements regRepositry {
+	
+	public static  List<regModel> rigest;
 	
 	@Autowired
 	private regRepositry regRepo;

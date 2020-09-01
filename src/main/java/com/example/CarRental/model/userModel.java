@@ -24,6 +24,9 @@ public class userModel {
 	@Column(name = "UserEmeil")
 	private String UserEmeil;
 	
+	@Column(name = "Pass")
+	private String Pass;
+	
 	@Column(name = "UserAddreas")
 	private String UserAddreas;
 	
@@ -34,19 +37,21 @@ public class userModel {
 		
 	}
 	
-	public userModel(@JsonProperty("UserName") String  userName, @JsonProperty("UserEmeil") String userEmeil,@JsonProperty("UserAddreas") String userAddreas, @JsonProperty("Cash") int cash) {
+	public userModel(@JsonProperty("UserName") String  userName, @JsonProperty("UserEmeil") String userEmeil,@JsonProperty("Pass") String pass,@JsonProperty("UserAddreas") String userAddreas, @JsonProperty("Cash") int cash) {
 		
 		this.UserName =userName;
 		this.UserEmeil = userEmeil;
+		this.Pass = pass;
 		this.UserAddreas = userEmeil;
 		this.Cash = cash;
 	}
 
-	public userModel(int userId, String userName, String userEmeil, String userAddreas, int cash) {
+	public userModel(int userId, String userName, String userEmeil,String pass, String userAddreas, int cash) {
 		super();
 		UserId = userId;
 		UserName = userName;
 		UserEmeil = userEmeil;
+		Pass = pass;
 		UserAddreas = userAddreas;
 		Cash = cash;
 	}
@@ -73,6 +78,16 @@ public class userModel {
 
 	public void setUserEmeil(String userEmeil) {
 		UserEmeil = userEmeil;
+	}
+	
+	
+
+	public String getPass() {
+		return Pass;
+	}
+
+	public void setPass(String pass) {
+		Pass = pass;
 	}
 
 	public String getUserAddreas() {

@@ -39,23 +39,28 @@ public class regModel {
     @Column(name="DateofReg")
     private Date DateofReg;
 	    
+	    @Column(name="Accebted")
+	    private Boolean Accebted;
+	    
 	    
 	    public regModel() {
 	    	
 	    	
 	    }
 
-		public regModel(@JsonProperty("UserId") int userId, @JsonProperty("DateofReg") Date DateOfReg ) {
+		public regModel(@JsonProperty("UserId") int userId, @JsonProperty("DateofReg") Date DateOfReg, @JsonProperty("Accebted") Boolean accebted ) {
 			
 	       this.UserId=userId;
 	       this.DateofReg=DateOfReg;
+	       this.Accebted = accebted;
 	        }
 
-		public regModel(int carId, int userId, Date dateofReg) {
+		public regModel(int carId, int userId, Date dateofReg , Boolean accebted) {
 			super();
 			CarId = carId;
 			UserId = userId;
 			DateofReg = dateofReg;
+		       this.Accebted = accebted;
 		}
 
 		public int getCarId() {
@@ -82,11 +87,21 @@ public class regModel {
 			DateofReg = dateofReg;
 		}
 
+		
+		public Boolean getAccebted() {
+			return Accebted;
+		}
+
+		public void setAccebted(Boolean accebted) {
+			Accebted = accebted;
+		}
+
 		@Override
 		public String toString() {
-			return "regModel [CarId=" + CarId + ", UserId=" + UserId + ", DateofReg=" + DateofReg + "]";
+			return "regModel [CarId=" + CarId + ", UserId=" + UserId + ", DateofReg=" + DateofReg + ", Accebted="
+					+ Accebted + "]";
 		}
-		
+
 		
 		
 		

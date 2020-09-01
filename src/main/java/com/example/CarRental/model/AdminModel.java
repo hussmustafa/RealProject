@@ -20,29 +20,41 @@ public class AdminModel {
 	private String AdminName;
 	
 	@Column(name="AdminEmeil")
-	private String AdminEmil;
+	private String AdminEmeil;
+	
+	@Column(name = "Pass")
+	private String Pass;
 	
 	@Column(name = "AdminAddreas")
 	private String AdminAddreas;
+	
+	@Column(name = "Money")
+	private double Money;
+	
+	
 	
 	public AdminModel() {
 		
 	}
 	
-	public AdminModel(@JsonProperty("AdminName")String Adminname,@JsonProperty("ِAdminEmeil")String adminemail,@JsonProperty("AdminAddreas")String Adminaddreas) {
+	public AdminModel(@JsonProperty("AdminName")String Adminname,@JsonProperty("ِAdminEmeil")String adminemail, @JsonProperty("Pass")String pass ,@JsonProperty("AdminAddreas")String Adminaddreas,@JsonProperty("Money")double money) {
 		
 		this.AdminName=Adminname;
-		this.AdminEmil = adminemail;
+		this.AdminEmeil = adminemail;
+		this.Pass = pass;
 		this.AdminAddreas = Adminaddreas;
+		this.Money=money;
 		
 	}
 
-	public AdminModel(int adminId, String adminName, String adminEmil, String adminAddreas) {
+	public AdminModel(int adminId, String adminName, String adminEmeil,String pass, String adminAddreas,Double money) {
 		super();
 		AdminId = adminId;
 		AdminName = adminName;
-		AdminEmil = adminEmil;
+		AdminEmeil = adminEmeil;
+		Pass=pass;
 		AdminAddreas = adminAddreas;
+		Money = money;
 	}
 
 	public int getAdminId() {
@@ -61,12 +73,20 @@ public class AdminModel {
 		AdminName = adminName;
 	}
 
-	public String getAdminEmil() {
-		return AdminEmil;
+	public String getAdminEmeil() {
+		return AdminEmeil;
 	}
 
-	public void setAdminEmil(String adminEmil) {
-		AdminEmil = adminEmil;
+	public void setAdminEmeil(String adminEmeil) {
+		AdminEmeil = adminEmeil;
+	}
+
+	public String getPass() {
+		return Pass;
+	}
+
+	public void setPass(String pass) {
+		Pass = pass;
 	}
 
 	public String getAdminAddreas() {
@@ -77,11 +97,20 @@ public class AdminModel {
 		AdminAddreas = adminAddreas;
 	}
 
+	public double getMoney() {
+		return Money;
+	}
+
+	public void setMoney(double money) {
+		Money = money;
+	}
+
 	@Override
 	public String toString() {
-		return "AdminModel [AdminId=" + AdminId + ", AdminName=" + AdminName + ", AdminEmil=" + AdminEmil
-				+ ", AdminAddreas=" + AdminAddreas + "]";
+		return "AdminModel [AdminId=" + AdminId + ", AdminName=" + AdminName + ", AdminEmeil=" + AdminEmeil + ", Pass="
+				+ Pass + ", AdminAddreas=" + AdminAddreas + ", Money=" + Money + "]";
 	}
+
 	
 	
 	

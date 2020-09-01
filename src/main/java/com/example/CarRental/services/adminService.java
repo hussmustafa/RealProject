@@ -12,12 +12,46 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.CarRental.model.AdminModel;
+import com.example.CarRental.model.CarModel;
+import com.example.CarRental.model.regModel;
+import com.example.CarRental.repository.CarRepository;
 import com.example.CarRental.repository.adminRepository;
+import com.example.CarRental.repository.regRepositry;
 @Service
 public class adminService implements adminRepository {
 
 	@Autowired
-	private adminRepository adminRepo;
+	adminRepository adminRepo;
+	@Autowired
+	CarRepository carRepo;
+	
+	@Autowired
+    regRepositry regRepo;	
+	
+	
+	
+	public CarModel addcar(CarModel car) {
+		return  carRepo.save(car); 
+		
+	}
+	
+	public void deleteCar( int id) {
+		carRepo.deleteById(id);
+		
+	}
+	
+	public String seeReg(){
+		return regRepo.findAll().toString();
+	}
+	
+	
+	
+	public void Accebt(regModel reg) {
+		reg.setAccebted(true);
+	}
+	
+	
+	
 	
 	
 	

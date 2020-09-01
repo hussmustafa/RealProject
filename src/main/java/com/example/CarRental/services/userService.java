@@ -1,5 +1,6 @@
 package com.example.CarRental.services;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -11,14 +12,69 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.example.CarRental.model.CarModel;
+import com.example.CarRental.model.regModel;
 import com.example.CarRental.model.userModel;
+import com.example.CarRental.repository.CarRepository;
 import com.example.CarRental.repository.userRepository;
 @Service
 public class userService implements userRepository {
 	
 
 	@Autowired
-	private userRepository userRepo;
+	 userRepository userRepo;
+	
+
+public	regService regg;
+	@Autowired
+	CarRepository carRepo;
+	
+	public boolean CheakIDs(int carid , int userId) {
+		 List<userModel> users = userRepo.findAll();
+		 List<CarModel> cars = carRepo.findAll();
+		 
+		 for(int i =0; i < users.size(); i++) {
+			 if(users.stream().map(p -> p.getUserId()==userId )!= null && cars.stream().map(p -> p.getCarId()==carid) != null)
+				 return true;
+		 }
+		 
+		 return false;
+
+		
+	}
+	public boolean RentCar(int carId, int userId, Date date) {
+		 List<userModel> users = userRepo.findAll();
+		 List<CarModel> cars = carRepo.findAll();
+		 
+		 regModel reg = null;
+		 reg.setCarId(carId);
+		 reg.setUserId(userId);
+		 reg.setDateofReg(date);
+		 reg.setAccebted(false);
+		 
+		 for(int i =0 ; i < cars.size();i++) {
+			if( cars.stream().map(p -> p.getCarId()==carId) != null) {
+				if(cars.stream().map(p-> p.getIsAvalble()==1) != null)
+					regg.save(reg);
+						return true;
+			
+			
+				
+			 }
+			return false;
+			 
+		 }
+		 
+	
+		 
+		 
+		 return false;
+		 
+		 	
+		
+	}
+	
+
 	
 	public List <String> getAllUserNames()
 	{
@@ -36,12 +92,33 @@ public class userService implements userRepository {
 	}
 
 	
+	public boolean findEmailAndPass(String emeil,String pass) {
+		
+		 List<userModel> users = userRepo.findAll();
+		 if(users.stream().map(p-> p.getUserEmeil().compareToIgnoreCase(emeil)==0) != null && users.stream().map(p-> p.getPass().compareTo(pass)==0) != null)
+	
+		 return true;
+		 else
+			 return false;
 
+	}
+
+	public boolean SignIn(String emeil, String pass) {
+		
+	return findEmailAndPass(emeil, pass);
+	
+	}
+
+	
+	public userModel SignUp(userModel user) {
+		return userRepo.save(user);
+	}
+	
 	
 
 	@Override
 	public <S extends userModel> List<S> saveAll(Iterable<S> entities) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -72,7 +149,7 @@ public class userService implements userRepository {
 	@Override
 	public userModel getOne(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return userRepo.getOne(id);
 	}
 
 	@Override
@@ -95,8 +172,9 @@ public class userService implements userRepository {
 
 	@Override
 	public <S extends userModel> S save(S entity) {
-		// TODO Auto-generated method stub
-		return null;
+
+		
+		return userRepo.save(entity);
 	}
 
 	@Override
